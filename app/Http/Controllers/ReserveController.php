@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Reserve;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Requests\ReserveRequest;
 class ReserveController extends Controller
 {
-    public function create(Request $request)
+    public function create(ReserveRequest $request)
   {
     $reserve= new Reserve();
     $reserve->user_id=Auth::user()->id;
@@ -23,6 +23,6 @@ class ReserveController extends Controller
 
   public function show()
   {
-      return view('done');
+    return view('done');
 }
 }

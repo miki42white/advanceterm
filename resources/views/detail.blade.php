@@ -91,17 +91,28 @@
           </tr>
           <form action="/done" method="post">
             @csrf
+            @error('date')
             <tr>
-              <td><input class="input-item" type="date" name="date" id="input_date"></td>
+              <td><input class="input-item" type="date" name="date" id="input_date" value="{{old('date')}}"></td>
             </tr>
             <tr>
+              <td class="text-danger"> {{$message}}</td>
+            </tr>
+            @enderror
+            @error('time')
+            <tr>
               <td>
-                <input type="time" class="input-item" name="time" id="input_time" min="09:00" max="21:00">
+                <input type="time" class="input-item" name="time" id="input_time" min="09:00" max="21:00" value="{{old('time')}}">
               </td>
             </tr>
             <tr>
+            <td class="text-danger"> {{$message}}</td>
+            </tr>
+            @enderror
+            @error('number')
+            <tr>
               <td>
-                <select class="input-item" name="number" id="input_number">
+                <select class="input-item" name="number" id="input_number" value="{{old('number')}}">
                   <option value="1人">1人</option>
                   <option value="2人">2人</option>
                   <option value="3人">3人</option>
@@ -115,6 +126,10 @@
                 </select>
               </td>
             </tr>
+            <tr>
+            <td class="text-danger"> {{$message}}</td>
+            </tr>
+            @enderror
           </table>
           <div class="confirm">
             <table>
